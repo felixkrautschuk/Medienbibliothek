@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.felix.medienbibliothek.BuecherActivity" >
+    <item android:id="@+id/action_neu"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Hinzufügen"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_suchen"
+        android:icon="@android:drawable/btn_plus"
+        android:title="Suchen"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+</menu>

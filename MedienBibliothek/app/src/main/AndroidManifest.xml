@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.felix.medienbibliothek" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PersonenActivity"
+            android:label="@string/title_activity_personen" >
+        </activity>
+        <activity
+            android:name=".BuecherActivity"
+            android:label="@string/title_activity_buecher" >
+        </activity>
+        <activity
+            android:name=".VerleihActivity"
+            android:label="@string/title_activity_verleih" >
+        </activity>
+        <activity
+            android:name=".RueckgabeActivity"
+            android:label="@string/title_activity_rueckgabe" >
+        </activity>
+        <activity
+            android:name=".BuecherHinzufuegenActivity"
+            android:label="@string/title_activity_buecher_hinzufuegen" >
+        </activity>
+        <activity
+            android:name=".PersonenHinzufuegenActivity"
+            android:label="@string/title_activity_personen_hinzufuegen" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MedienBibliothek</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_personen">PersonenActivity</string>
+    <string name="title_activity_buecher">BuecherActivity</string>
+    <string name="title_activity_verleih">VerleihActivity</string>
+    <string name="title_activity_rueckgabe">RueckgabeActivity</string>
+    <string name="title_activity_buecher_hinzufuegen">BuecherHinzufuegenActivity</string>
+    <string name="title_activity_personen_hinzufuegen">PersonenHinzufuegenActivity</string>
+
+</resources>
