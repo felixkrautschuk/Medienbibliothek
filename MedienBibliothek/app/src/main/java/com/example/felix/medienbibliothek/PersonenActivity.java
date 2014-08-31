@@ -1,10 +1,14 @@
 package com.example.felix.medienbibliothek;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -17,7 +21,7 @@ public class PersonenActivity extends Activity
 {
     ListView listViewPersonen;
     List<Person> personenListe = new ArrayList<Person>();
-    ArrayAdapter<Person> listAdapter;
+
     Intent intent;
 
     String id, nachname, vorname;
@@ -30,8 +34,8 @@ public class PersonenActivity extends Activity
 
         intent = getIntent();
         listViewPersonen = (ListView) findViewById(R.id.listViewPersonen);
-        listAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, personenListe);
-        listViewPersonen.setAdapter(listAdapter);
+
+
 
         id = intent.getStringExtra(PersonenHinzufuegenActivity.EXTRA_MESSAGE1);
         nachname = intent.getStringExtra(PersonenHinzufuegenActivity.EXTRA_MESSAGE2);
@@ -76,5 +80,38 @@ public class PersonenActivity extends Activity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        PersonListAdapter listAdapter;
+        listAdapter = new PersonListAdapter(this, 0, personenListe);
+        listViewPersonen.setAdapter(listAdapter);
+    }
+
+    private static class PersonListAdapter extends ArrayAdapter<Person>
+    {
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+            Person noteItem = getItem(position);
+            PersonListItemView personListItemView = null;
+            if(convertView != null)
+            {
+                personListItemView = (PersonListItemView) convertView;
+            }
+            else
+            {
+                personListItemView = new PersonListItemView(getContext());
+            }
+            personListItemView.setNoteItem(noteItem);
+            return personListItemView;
+        }
+        public PersonListAdapter(Context context, int textViewResourceId, List<Person> objects)
+        {
+            super(context, textViewResourceId, objects);
+        }
     }
 }
