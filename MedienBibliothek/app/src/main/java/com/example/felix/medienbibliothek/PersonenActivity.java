@@ -5,12 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PersonenActivity extends Activity
 {
     ListView listViewPersonen;
+    List<Person> personenListe = new ArrayList<Person>();
+    ArrayAdapter<Person> listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,6 +26,9 @@ public class PersonenActivity extends Activity
         setContentView(R.layout.activity_personen);
 
         listViewPersonen = (ListView) findViewById(R.id.listViewPersonen);
+
+        listAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, personenListe);
+        listViewPersonen.setAdapter(listAdapter);
     }
 
 
