@@ -12,4 +12,10 @@
         android:icon="@android:drawable/btn_plus"
         android:orderInCategory="100"
         android:showAsAction="never" />
+
+    <item android:id="@+id/action_aktualisieren"
+        android:title="Aktualisieren"
+        android:icon="@drawable/update"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
 </menu>

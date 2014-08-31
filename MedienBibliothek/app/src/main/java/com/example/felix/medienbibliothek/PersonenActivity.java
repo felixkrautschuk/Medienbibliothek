@@ -18,6 +18,9 @@ public class PersonenActivity extends Activity
     ListView listViewPersonen;
     List<Person> personenListe = new ArrayList<Person>();
     ArrayAdapter<Person> listAdapter;
+    Intent intent;
+
+    String id, nachname, vorname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,10 +28,21 @@ public class PersonenActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personen);
 
+        intent = getIntent();
         listViewPersonen = (ListView) findViewById(R.id.listViewPersonen);
-
         listAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, personenListe);
         listViewPersonen.setAdapter(listAdapter);
+
+        id = intent.getStringExtra(PersonenHinzufuegenActivity.EXTRA_MESSAGE1);
+        nachname = intent.getStringExtra(PersonenHinzufuegenActivity.EXTRA_MESSAGE2);
+        vorname = intent.getStringExtra(PersonenHinzufuegenActivity.EXTRA_MESSAGE3);
+
+        if(id != null && nachname != null && vorname != null)
+        {
+            System.out.println(id + " " + nachname + " " + vorname);
+            Person person = new Person(Integer.parseInt(id), nachname, vorname);
+            personenListe.add(person);
+        }
     }
 
 
@@ -46,14 +60,18 @@ public class PersonenActivity extends Activity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_neu)
+        if (item.getItemId() == R.id.action_neu)
         {
             startActivity(new Intent(this, PersonenHinzufuegenActivity.class));
             return true;
         }
 
-        if(id == R.id.action_suchen)
+        if(item.getItemId() == R.id.action_suchen)
+        {
+            return true;
+        }
+
+        if(item.getItemId() == R.id.action_aktualisieren)
         {
             return true;
         }

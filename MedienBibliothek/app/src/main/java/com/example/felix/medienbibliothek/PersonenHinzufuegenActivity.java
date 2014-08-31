@@ -1,6 +1,7 @@
 package com.example.felix.medienbibliothek;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,10 +15,10 @@ public class PersonenHinzufuegenActivity extends Activity implements View.OnClic
 {
     EditText textViewID, textViewNachname, textViewVorname;
     Button buttonPersonHinzufuegen;
-
-    int id;
-    String nachname, vorname;
-    public PersonenActivity personenActivity;
+    public final static String EXTRA_MESSAGE1 = "com.example.felix.medienbibliothek.MESSAGE1";
+    public final static String EXTRA_MESSAGE2 = "com.example.felix.medienbibliothek.MESSAGE2";
+    public final static String EXTRA_MESSAGE3 = "com.example.felix.medienbibliothek.MESSAGE3";
+    String id, nachname, vorname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,12 +60,15 @@ public class PersonenHinzufuegenActivity extends Activity implements View.OnClic
     {
         if(view.getId() == R.id.buttonPersonHinzufuegen)
         {
-            id = Integer.parseInt(textViewID.getText().toString());
+            Intent intent = new Intent(this, PersonenActivity.class);
+            id = textViewID.getText().toString();
             nachname = textViewNachname.getText().toString();
             vorname = textViewVorname.getText().toString();
 
-            Person person = new Person(id, nachname, vorname);
-            personenActivity.personenListe.add(person);
+            intent.putExtra(EXTRA_MESSAGE1, id);
+            intent.putExtra(EXTRA_MESSAGE2, nachname);
+            intent.putExtra(EXTRA_MESSAGE3, vorname);
+            startActivity(intent);
         }
     }
 }
